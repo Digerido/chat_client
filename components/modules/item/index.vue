@@ -138,35 +138,6 @@
               ),
             }"
           >
-            <div class="offer-req offer-req2">
-              <div class="offer-req__price text28 medium-text">
-                {{ item?.price }} руб.
-              </div>
-              <slot name="item-volume"></slot>
-              <button
-                v-if="
-                  (type === 'service' && user?.active_role === 'buyer') ||
-                  (type === 'project' && user?.active_role === 'seller')
-                "
-                class="offer-req__btn m-btn m-btn-blue m-btn-shadow"
-                @click="createOrder()"
-              >
-                <span>{{
-                  type === "service"
-                    ? `Заказать за ${item?.price} руб.`
-                    : item &&
-                        "bids" in item &&
-                        item.bids.find(
-                          (bid) =>
-                            typeof bid.user !== "string" &&
-                            bid.user._id === user?._id,
-                        )
-                      ? "Отклик оставлен"
-                      : "Откликнуться"
-                }}</span>
-              </button>
-            </div>
-
             <div class="about-client">
               <div class="text20 text18-tablet medium-text">
                 {{ type === "service" ? `Об исполнителе` : "О заказчике" }}
